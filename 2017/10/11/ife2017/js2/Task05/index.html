@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="百度IFE2017," />
+
+
+<meta name="description" content="任务五：听指令的小方块（二）任务目的练习JavaScript在DOM、字符串处理相关知识练习对于复杂UI，如何进行数据机构建模 任务描述对于正方形的移动增加相应动画，包括移动和旋转每个指令的执行时间是1s（可以自己调整）增加新的指令如下：TRA LEF：向屏幕的左侧移动一格，方向不变TRA TOP：向屏幕的上面移动一格，方向不变TRA RIG：向屏幕的右侧移动一格，方向不变TRA BOT：向屏幕的">
+<meta name="keywords" content="百度IFE2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IFE JavaScript Task 2-05">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/ife2017/js2/Task05/index.html">
+<meta property="og:site_name" content="Kamui&#39;s Notes">
+<meta property="og:description" content="任务五：听指令的小方块（二）任务目的练习JavaScript在DOM、字符串处理相关知识练习对于复杂UI，如何进行数据机构建模 任务描述对于正方形的移动增加相应动画，包括移动和旋转每个指令的执行时间是1s（可以自己调整）增加新的指令如下：TRA LEF：向屏幕的左侧移动一格，方向不变TRA TOP：向屏幕的上面移动一格，方向不变TRA RIG：向屏幕的右侧移动一格，方向不变TRA BOT：向屏幕的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T03:43:14.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IFE JavaScript Task 2-05">
+<meta name="twitter:description" content="任务五：听指令的小方块（二）任务目的练习JavaScript在DOM、字符串处理相关知识练习对于复杂UI，如何进行数据机构建模 任务描述对于正方形的移动增加相应动画，包括移动和旋转每个指令的执行时间是1s（可以自己调整）增加新的指令如下：TRA LEF：向屏幕的左侧移动一格，方向不变TRA TOP：向屏幕的上面移动一格，方向不变TRA RIG：向屏幕的右侧移动一格，方向不变TRA BOT：向屏幕的">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kamui's Notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/11/ife2017/js2/Task05/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>IFE JavaScript Task 2-05 | Kamui's Notes</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kamui's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-project">
+          <a href="/project/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />项目</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-demo">
+          <a href="/demo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />演示</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/ife2017/js2/Task05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamui's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IFE JavaScript Task 2-05</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T16:19:19+08:00">2017-10-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="任务五：听指令的小方块（二）"><a href="#任务五：听指令的小方块（二）" class="headerlink" title="任务五：听指令的小方块（二）"></a>任务五：听指令的小方块（二）</h1><h2 id="任务目的"><a href="#任务目的" class="headerlink" title="任务目的"></a>任务目的</h2><p>练习JavaScript在DOM、字符串处理相关知识<br>练习对于复杂UI，如何进行数据机构建模</p>
+<h2 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h2><p>对于正方形的移动增加相应动画，包括移动和旋转<br>每个指令的执行时间是1s（可以自己调整）<br>增加新的指令如下：<br>TRA LEF：向屏幕的左侧移动一格，方向不变<br>TRA TOP：向屏幕的上面移动一格，方向不变<br>TRA RIG：向屏幕的右侧移动一格，方向不变<br>TRA BOT：向屏幕的下面移动一格，方向不变<br>MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格<br>MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格<br>MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格<br>MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格</p>
+<h2 id="任务注意事项"><a href="#任务注意事项" class="headerlink" title="任务注意事项"></a>任务注意事项</h2><p>实现功能的同时，请仔细学习JavaScript相关的知识<br>请注意代码风格的整齐、优雅<br>代码中含有必要的注释<br>建议不使用任何第三方库、框架</p>
+<a id="more"></a>
+<p><em>代码如下：</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>IFE JavaScript Task 2 - 05<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrapper"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"buttons"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>Go<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>TunLeft<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>TunRight<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>TunBac<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>MovLeft<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>MovRight<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>MovTop<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span>&gt;</span>MovBottom<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//外部元素样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> wrapperStyle = <span class="string">"position:relative;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"width:331px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"height:331px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"margin:10px;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//表格样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> tableStyle = <span class="string">"border-collapse:collapse;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border-spacing:0;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//表格td样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> tdStyle = <span class="string">"width:30px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"height:30px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"padding:1px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"margin:0;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border:1px solid #cccccc;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//方块样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> blockStyle = <span class="string">"position:absolute;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"width:33px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"height:28px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"left:0px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"top:0px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"transition: all .5s;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"background:#75e5ff;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border-bottom:5px solid #f15555;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//按钮外部元素样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> buttonsWrapStyle = <span class="string">"padding:0 10px;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//按钮样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> buttonsStyle = <span class="string">"display: inline-block;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"background:#ffffff;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"color:#fd6ba6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"font-size:12px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"text-decoration:none;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"line-height:normal;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border:1px solid #fd6ba6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border-radius:3px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"padding: 6px 10px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"margin:0px 5px 5px 0;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//按钮hover样式</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> buttonsHoverStyle = <span class="string">"display: inline-block;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"background:#fd6ba6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"color:#ffffff;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"font-size:12px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"text-decoration:none;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"line-height:normal;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"-webkit-transition: all 0.28s ease;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"transition: all 0.28s ease;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border-radius:3px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border:1px solid #fd6ba6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"padding: 6px 10px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"margin:0px 5px 5px 0;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//获取按钮</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> getButtons = <span class="built_in">document</span>.getElementById(<span class="string">"buttons"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="comment">//获取容器元素</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> getWrapper = $(<span class="string">"#wrapper"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//初始角度</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> blockDeg = <span class="number">0</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(e);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*添加样式</span></span><br><span class="line"><span class="undefined">                     */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">addStyle</span>(<span class="params">id, el, style</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> els = $(id).getElementsByTagName(el);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (els.length === <span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="undefined">                    els[0].style.cssText = style;</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; els.length; i++) &#123;</span></span><br><span class="line"><span class="undefined">                        els[i].style.cssText = style;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//按钮增加hover样式</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">buttonHover</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                getButtons.addEventListener(<span class="string">"mouseover"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.nodeName === <span class="string">"A"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        event.target.style.cssText = buttonsHoverStyle;<span class="comment">//为按钮增加样式</span></span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;);</span></span><br><span class="line"><span class="javascript">                getButtons.addEventListener(<span class="string">"mouseout"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.nodeName === <span class="string">"A"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        event.target.style.cssText = buttonsStyle;<span class="comment">//为按钮增加样式</span></span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">createTable</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//创建table</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> _table = <span class="built_in">document</span>.createElement(<span class="string">"table"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//创建tbody</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> _tbody = <span class="built_in">document</span>.createElement(<span class="string">"tbody"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取table父元素 生成table</span></span></span><br><span class="line"><span class="undefined">                getWrapper.appendChild(_table);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取table 生成tbdoy</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> getTable = getWrapper.getElementsByTagName(<span class="string">"table"</span>);</span></span><br><span class="line"><span class="undefined">                getTable[0].appendChild(_tbody);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取tbody</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> getTbody = getWrapper.getElementsByTagName(<span class="string">"tbody"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">let</span> _tr = [];</span></span><br><span class="line"><span class="javascript">                    _tr[i] = <span class="built_in">document</span>.createElement(<span class="string">"tr"</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="comment">//生成tr</span></span></span><br><span class="line"><span class="undefined">                    getTbody[0].appendChild(_tr[i]);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">//获取tr 生成td</span></span></span><br><span class="line"><span class="javascript">                        <span class="keyword">let</span> getTr = getTbody[<span class="number">0</span>].getElementsByTagName(<span class="string">"tr"</span>);</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">let</span> _td = [];</span></span><br><span class="line"><span class="javascript">                        _td[j] = <span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</span></span><br><span class="line"><span class="undefined">                        _tr[i].appendChild(_td[j]);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//创建方块</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">createBlock</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> _block = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span></span><br><span class="line"><span class="javascript">                getWrapper.appendChild(_block).id = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//移动</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">Go</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> getBlock = $(<span class="string">"#block"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block边距</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> collTop = getBlock.offsetTop;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> collLeft = getBlock.offsetLeft;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block高度</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> BlockHeight = getBlock.offsetHeight;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取容器高度与宽度</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> wrapHeight = getWrapper.offsetHeight - BlockHeight * <span class="number">2</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> _blockDeg = blockDeg;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                <span class="comment">//如果角度是负值，取正</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">while</span> (_blockDeg &lt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="undefined">                    _blockDeg = _blockDeg + 360;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (_blockDeg % <span class="number">360</span> === <span class="number">270</span> &amp;&amp; collLeft &lt; wrapHeight) &#123;<span class="comment">//右移</span></span></span><br><span class="line"><span class="javascript">                    getBlock.style.left = collLeft + BlockHeight + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"右移"</span>);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_blockDeg % <span class="number">360</span> === <span class="number">0</span> &amp;&amp; collTop &lt; wrapHeight) &#123;<span class="comment">//下移</span></span></span><br><span class="line"><span class="javascript">                    getBlock.style.top = collTop + BlockHeight + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"下移"</span>);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_blockDeg % <span class="number">360</span> === <span class="number">90</span> &amp;&amp; collLeft &gt; <span class="number">0</span>) &#123;<span class="comment">//左移</span></span></span><br><span class="line"><span class="javascript">                    getBlock.style.left = (collLeft - BlockHeight) + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"左移"</span>);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_blockDeg % <span class="number">360</span> === <span class="number">180</span> &amp;&amp; collTop &gt; <span class="number">0</span>) &#123;<span class="comment">//上移</span></span></span><br><span class="line"><span class="javascript">                    getBlock.style.top = (collTop - BlockHeight) + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"上移"</span>);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        alert(<span class="string">"不能超过边界！"</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;, 200)</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//旋转并移动</span></span></span><br><span class="line"><span class="javascript">             <span class="function"><span class="keyword">function</span> <span class="title">GoTo</span> (<span class="params">n</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> getBlock = $(<span class="string">"#block"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block边距</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> collTop = getBlock.offsetTop;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> collLeft = getBlock.offsetLeft;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block高度</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> BlockHeight = getBlock.offsetHeight;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取容器高度与宽度</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> wrapHeight = getWrapper.offsetHeight - BlockHeight * <span class="number">2</span>;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">switch</span> (n)&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">case</span> <span class="string">"left"</span> :</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (collLeft &gt; <span class="number">0</span>) &#123;<span class="comment">//左移</span></span></span><br><span class="line"><span class="javascript">                            getBlock.style.left = (collLeft - BlockHeight) + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="string">"左移"</span>);</span></span><br><span class="line"><span class="javascript">                        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                            setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                                alert(<span class="string">"不能超过边界！"</span>);</span></span><br><span class="line"><span class="undefined">                            &#125;, 200)</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">case</span> <span class="string">"right"</span> :</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (collLeft &lt; wrapHeight) &#123;<span class="comment">//右移</span></span></span><br><span class="line"><span class="javascript">                            getBlock.style.left = collLeft + BlockHeight + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="string">"右移"</span>);</span></span><br><span class="line"><span class="javascript">                        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                            setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                                alert(<span class="string">"不能超过边界！"</span>);</span></span><br><span class="line"><span class="undefined">                            &#125;, 200)</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">case</span> <span class="string">"top"</span> :</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (collTop &gt; <span class="number">0</span>) &#123;<span class="comment">//上移</span></span></span><br><span class="line"><span class="javascript">                            getBlock.style.top = (collTop - BlockHeight) + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="string">"上移"</span>);</span></span><br><span class="line"><span class="javascript">                        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                            setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                                alert(<span class="string">"不能超过边界！"</span>);</span></span><br><span class="line"><span class="undefined">                            &#125;, 200)</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">case</span> <span class="string">"bottom"</span> :</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (collTop &lt; wrapHeight) &#123;<span class="comment">//下移</span></span></span><br><span class="line"><span class="javascript">                            getBlock.style.top = collTop + BlockHeight + <span class="string">"px"</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="string">"下移"</span>);</span></span><br><span class="line"><span class="javascript">                        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                            setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                                alert(<span class="string">"不能超过边界！"</span>);</span></span><br><span class="line"><span class="undefined">                            &#125;, 200)</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//旋转并移动函数</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">moveTo</span>(<span class="params">direction,angle</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> getBlock = $(<span class="string">"#block"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span>(getBlock.style.transform === <span class="string">"rotate("</span> + angle + <span class="string">"deg)"</span>)&#123;</span></span><br><span class="line"><span class="undefined">                    GoTo(direction);</span></span><br><span class="line"><span class="javascript">                &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                    getBlock.style.transform = <span class="string">"rotate("</span> + angle + <span class="string">"deg)"</span>;</span></span><br><span class="line"><span class="undefined">                    GoTo(direction);</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//block旋转</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">tun</span>(<span class="params">deg, b</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">//获取block</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> getBlock = $(<span class="string">"#block"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (b === <span class="literal">true</span>) &#123;</span></span><br><span class="line"><span class="undefined">                    blockDeg = blockDeg - deg;</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b === <span class="literal">false</span>) &#123;</span></span><br><span class="line"><span class="undefined">                    blockDeg = blockDeg + deg;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">                getBlock.style.transform = <span class="string">"rotate("</span> + blockDeg + <span class="string">"Deg)"</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//绑定事件</span></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">addListener</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                getButtons.addEventListener(<span class="string">"click"</span>, event =&gt; &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"Go"</span>) &#123;</span></span><br><span class="line"><span class="undefined">                        Go();</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"TunLeft"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        tun(<span class="number">90</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"TunRight"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        tun(<span class="number">90</span>, <span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"TunBac"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        tun(<span class="number">180</span>, <span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">//旋转并移动</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"MovLeft"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        moveTo(<span class="string">"left"</span>,<span class="number">90</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"MovRight"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        moveTo(<span class="string">"right"</span>,<span class="number">-90</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"MovTop"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        moveTo(<span class="string">"top"</span>,<span class="number">180</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (event.target.innerHTML === <span class="string">"MovBottom"</span>) &#123;</span></span><br><span class="line"><span class="javascript">                        moveTo(<span class="string">"bottom"</span>,<span class="number">0</span>);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;)</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                createTable();</span></span><br><span class="line"><span class="undefined">                createBlock();</span></span><br><span class="line"><span class="javascript">                <span class="comment">//添加样式</span></span></span><br><span class="line"><span class="javascript">                $(<span class="string">"#wrapper"</span>).style.cssText = wrapperStyle;</span></span><br><span class="line"><span class="undefined">                getButtons.style.cssText = buttonsWrapStyle;</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"#wrapper"</span>, <span class="string">"table"</span>, tableStyle);</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"#wrapper"</span>, <span class="string">"td"</span>, tdStyle);</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"#wrapper"</span>, <span class="string">"div"</span>, blockStyle);</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"#buttons"</span>, <span class="string">"a"</span>, buttonsStyle);</span></span><br><span class="line"><span class="undefined">                buttonHover();</span></span><br><span class="line"><span class="undefined">                addListener();</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            init();</span></span><br><span class="line"><span class="undefined">        &#125;())</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>Demo如下：</em></p>
+<script>
+    window.onload = function () {
+        (function () {
+            //外部元素样式
+            const wrapperStyle = "position:relative;" +
+                "width:331px;" +
+                "height:331px;" +
+                "margin:10px;";
+            //表格样式
+            const tableStyle = "border-collapse:collapse;" +
+                "border-spacing:0;";
+            //表格td样式
+            const tdStyle = "width:30px;" +
+                "height:30px;" +
+                "padding:1px;" +
+                "margin:0;" +
+                "border:1px solid #cccccc;";
+            //方块样式
+            const blockStyle = "position:absolute;" +
+                "width:33px;" +
+                "height:28px;" +
+                "left:0px;" +
+                "top:0px;" +
+                "transition: all .5s;" +
+                "background:#75e5ff;" +
+                "border-bottom:5px solid #f15555;";
+            //按钮外部元素样式
+            const buttonsWrapStyle = "padding:0 10px;";
+            //按钮样式
+            const buttonsStyle = "display: inline-block;" +
+                "background:#ffffff;" +
+                "color:#fd6ba6;" +
+                "font-size:12px;" +
+                "text-decoration:none;" +
+                "line-height:normal;" +
+                "border:1px solid #fd6ba6;" +
+                "border-radius:3px;" +
+                "padding: 6px 10px;" +
+                "margin:0px 5px 5px 0;";
+            //按钮hover样式
+            const buttonsHoverStyle = "display: inline-block;" +
+                "background:#fd6ba6;" +
+                "color:#ffffff;" +
+                "font-size:12px;" +
+                "text-decoration:none;" +
+                "line-height:normal;" +
+                "-webkit-transition: all 0.28s ease;" +
+                "transition: all 0.28s ease;" +
+                "border-radius:3px;" +
+                "border:1px solid #fd6ba6;" +
+                "padding: 6px 10px;" +
+                "margin:0px 5px 5px 0;";
+            //获取按钮
+            const getButtons = document.getElementById("buttons");
+            //获取容器元素
+            const getWrapper = $("#wrapper");
+
+            //初始角度
+            var blockDeg = 0;
+
+            function $(e) {
+                return document.querySelector(e);
+            }
+
+            /*添加样式
+                     */
+            function addStyle(id, el, style) {
+                let els = $(id).getElementsByTagName(el);
+                if (els.length === 1) {
+                    els[0].style.cssText = style;
+                } else {
+                    for (let i = 0; i < els.length; i++) {
+                        els[i].style.cssText = style;
+                    }
+                }
+            }
+
+            //按钮增加hover样式
+            function buttonHover() {
+                getButtons.addEventListener("mouseover", function (event) {
+                    if (event.target.nodeName === "A") {
+                        event.target.style.cssText = buttonsHoverStyle;//为按钮增加样式
+                    }
+                });
+                getButtons.addEventListener("mouseout", function (event) {
+                    if (event.target.nodeName === "A") {
+                        event.target.style.cssText = buttonsStyle;//为按钮增加样式
+                    }
+                });
+            }
+
+            function createTable() {
+                //创建table
+                const _table = document.createElement("table");
+                //创建tbody
+                const _tbody = document.createElement("tbody");
+                //获取table父元素 生成table
+                getWrapper.appendChild(_table);
+                //获取table 生成tbdoy
+                const getTable = getWrapper.getElementsByTagName("table");
+                getTable[0].appendChild(_tbody);
+                //获取tbody
+                const getTbody = getWrapper.getElementsByTagName("tbody");
+                for (let i = 0; i < 10; i++) {
+                    let _tr = [];
+                    _tr[i] = document.createElement("tr");
+                    //生成tr
+                    getTbody[0].appendChild(_tr[i]);
+                    for (let j = 0; j < 10; j++) {
+                        //获取tr 生成td
+                        let getTr = getTbody[0].getElementsByTagName("tr");
+                        let _td = [];
+                        _td[j] = document.createElement("td");
+                        _tr[i].appendChild(_td[j]);
+                    }
+                }
+            }
+
+            //创建方块
+            function createBlock() {
+                const _block = document.createElement("div");
+                getWrapper.appendChild(_block).id = "block";
+            }
+
+            //移动
+            function Go() {
+                //获取block
+                const getBlock = $("#block");
+                //获取block边距
+                const collTop = getBlock.offsetTop;
+                const collLeft = getBlock.offsetLeft;
+                //获取block高度
+                const BlockHeight = getBlock.offsetHeight;
+                //获取容器高度与宽度
+                const wrapHeight = getWrapper.offsetHeight - BlockHeight * 2;
+
+                let _blockDeg = blockDeg;
+
+                //如果角度是负值，取正
+                while (_blockDeg < 0) {
+                    _blockDeg = _blockDeg + 360;
+                }
+                if (_blockDeg % 360 === 270 && collLeft < wrapHeight) {//右移
+                    getBlock.style.left = collLeft + BlockHeight + "px";
+                    console.log("右移");
+                } else if (_blockDeg % 360 === 0 && collTop < wrapHeight) {//下移
+                    getBlock.style.top = collTop + BlockHeight + "px";
+                    console.log("下移");
+                } else if (_blockDeg % 360 === 90 && collLeft > 0) {//左移
+                    getBlock.style.left = (collLeft - BlockHeight) + "px";
+                    console.log("左移");
+                } else if (_blockDeg % 360 === 180 && collTop > 0) {//上移
+                    getBlock.style.top = (collTop - BlockHeight) + "px";
+                    console.log("上移");
+                } else {
+                    setTimeout(function () {
+                        alert("不能超过边界！");
+                    }, 200)
+                }
+            }
+
+            //旋转并移动
+             function GoTo (n){
+                //获取block
+                const getBlock = $("#block");
+                //获取block边距
+                const collTop = getBlock.offsetTop;
+                const collLeft = getBlock.offsetLeft;
+                //获取block高度
+                const BlockHeight = getBlock.offsetHeight;
+                //获取容器高度与宽度
+                const wrapHeight = getWrapper.offsetHeight - BlockHeight * 2;
+                switch (n){
+                    case "left" :
+                        if (collLeft > 0) {//左移
+                            getBlock.style.left = (collLeft - BlockHeight) + "px";
+                            console.log("左移");
+                        } else {
+                            setTimeout(function () {
+                                alert("不能超过边界！");
+                            }, 200)
+                        }
+                        break;
+                    case "right" :
+                        if (collLeft < wrapHeight) {//右移
+                            getBlock.style.left = collLeft + BlockHeight + "px";
+                            console.log("右移");
+                        }else {
+                            setTimeout(function () {
+                                alert("不能超过边界！");
+                            }, 200)
+                        }
+                        break;
+                    case "top" :
+                        if (collTop > 0) {//上移
+                            getBlock.style.top = (collTop - BlockHeight) + "px";
+                            console.log("上移");
+                        }else {
+                            setTimeout(function () {
+                                alert("不能超过边界！");
+                            }, 200)
+                        }
+                        break;
+                    case "bottom" :
+                        if (collTop < wrapHeight) {//下移
+                            getBlock.style.top = collTop + BlockHeight + "px";
+                            console.log("下移");
+                        }else {
+                            setTimeout(function () {
+                                alert("不能超过边界！");
+                            }, 200)
+                        }
+                        break;
+                }
+            }
+            //旋转并移动函数
+            function moveTo(direction,angle) {
+                let getBlock = $("#block");
+                if(getBlock.style.transform === "rotate(" + angle + "deg)"){
+                    GoTo(direction);
+                }else {
+                    getBlock.style.transform = "rotate(" + angle + "deg)";
+                    GoTo(direction);
+                }
+            }
+
+            //block旋转
+            function tun(deg, b) {
+                //获取block
+                const getBlock = $("#block");
+                if (b === true) {
+                    blockDeg = blockDeg - deg;
+                } else if (b === false) {
+                    blockDeg = blockDeg + deg;
+                }
+                getBlock.style.transform = "rotate(" + blockDeg + "Deg)";
+            }
+
+            //绑定事件
+            function addListener() {
+                getButtons.addEventListener("click", event => {
+                    if (event.target.innerHTML === "Go") {
+                        Go();
+                    }
+                    if (event.target.innerHTML === "TunLeft") {
+                        tun(90, true);
+                    }
+                    if (event.target.innerHTML === "TunRight") {
+                        tun(90, false);
+                    }
+                    if (event.target.innerHTML === "TunBac") {
+                        tun(180, false);
+                    }
+                    //旋转并移动
+                    if (event.target.innerHTML === "MovLeft") {
+                        moveTo("left",90);
+                    }
+                    if (event.target.innerHTML === "MovRight") {
+                        moveTo("right",-90);
+                    }
+                    if (event.target.innerHTML === "MovTop") {
+                        moveTo("top",180);
+                    }
+                    if (event.target.innerHTML === "MovBottom") {
+                        moveTo("bottom",0);
+                    }
+                })
+            }
+
+            function init() {
+                createTable();
+                createBlock();
+                //添加样式
+                $("#wrapper").style.cssText = wrapperStyle;
+                getButtons.style.cssText = buttonsWrapStyle;
+                addStyle("#wrapper", "table", tableStyle);
+                addStyle("#wrapper", "td", tdStyle);
+                addStyle("#wrapper", "div", blockStyle);
+                addStyle("#buttons", "a", buttonsStyle);
+                buttonHover();
+                addListener();
+            }
+
+            init();
+        }())
+    }
+</script>
+
+<div id="wrapper"></div><div id="buttons"><a href="javascript:void(0);" target="_blank" rel="noopener">Go</a><a href="javascript:void(0);" target="_blank" rel="noopener">TunLeft</a><a href="javascript:void(0);" target="_blank" rel="noopener">TunRight</a><a href="javascript:void(0);" target="_blank" rel="noopener">TunBac</a><br><a href="javascript:void(0);" target="_blank" rel="noopener">MovLeft</a><a href="javascript:void(0);" target="_blank" rel="noopener">MovRight</a><a href="javascript:void(0);" target="_blank" rel="noopener">MovTop</a><a href="javascript:void(0);" target="_blank" rel="noopener">MovBottom</a></div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/百度IFE2017/" rel="tag"># 百度IFE2017</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/30/ife2017/js2/Task04/" rel="next" title="IFE JavaScript Task 2-04">
+                <i class="fa fa-chevron-left"></i> IFE JavaScript Task 2-04
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/27/js/JavaScript-012/" rel="prev" title="树形菜单折叠效果">
+                树形菜单折叠效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Kamui" />
+            
+              <p class="site-author-name" itemprop="name">Kamui</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kamui1073" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#任务五：听指令的小方块（二）"><span class="nav-number">1.</span> <span class="nav-text">任务五：听指令的小方块（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务目的"><span class="nav-number">1.1.</span> <span class="nav-text">任务目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务描述"><span class="nav-number">1.2.</span> <span class="nav-text">任务描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务注意事项"><span class="nav-number">1.3.</span> <span class="nav-text">任务注意事项</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kamui</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Hosted by <a href='https://coding.net/help/doc/pages/index.html' style='font-weight:bold;' target='_blank'>Coding Pages</a></div>
+
+
+<span class="post-meta-divider">|</span>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+  <span class="post-meta-divider"></span>
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-spin fa-globe"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/love.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/console-log.js?v=6.0.4"></script>
+
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+</body>
+</html>

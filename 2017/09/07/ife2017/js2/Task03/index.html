@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="百度IFE2017," />
+
+
+<meta name="description" content="任务三：表单（三）联动任务目的加强对JavaScript的掌握 熟悉常用表单处理逻辑 任务描述如示例图中所示，在页面中完成两个单选框，切换单选框的不同选项时下方显示的表单随之切换。当选择在校生时，出现两个select下拉菜单，一个选择城市，一个选择学校，当选择非在校生时，出一个文本输入框学校下拉菜单里的学校名单均为城市下拉菜单中所选的城市中的大学，当城市发生变化时，学校一起发生变化城市及学校的数据">
+<meta name="keywords" content="百度IFE2017">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IFE JavaScript Task 2-03">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/ife2017/js2/Task03/index.html">
+<meta property="og:site_name" content="Kamui&#39;s Notes">
+<meta property="og:description" content="任务三：表单（三）联动任务目的加强对JavaScript的掌握 熟悉常用表单处理逻辑 任务描述如示例图中所示，在页面中完成两个单选框，切换单选框的不同选项时下方显示的表单随之切换。当选择在校生时，出现两个select下拉菜单，一个选择城市，一个选择学校，当选择非在校生时，出一个文本输入框学校下拉菜单里的学校名单均为城市下拉菜单中所选的城市中的大学，当城市发生变化时，学校一起发生变化城市及学校的数据">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T03:43:14.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IFE JavaScript Task 2-03">
+<meta name="twitter:description" content="任务三：表单（三）联动任务目的加强对JavaScript的掌握 熟悉常用表单处理逻辑 任务描述如示例图中所示，在页面中完成两个单选框，切换单选框的不同选项时下方显示的表单随之切换。当选择在校生时，出现两个select下拉菜单，一个选择城市，一个选择学校，当选择非在校生时，出一个文本输入框学校下拉菜单里的学校名单均为城市下拉菜单中所选的城市中的大学，当城市发生变化时，学校一起发生变化城市及学校的数据">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kamui's Notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/ife2017/js2/Task03/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>IFE JavaScript Task 2-03 | Kamui's Notes</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kamui's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-project">
+          <a href="/project/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />项目</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-demo">
+          <a href="/demo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />演示</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ife2017/js2/Task03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamui's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IFE JavaScript Task 2-03</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T16:19:19+08:00">2017-09-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="任务三：表单（三）联动"><a href="#任务三：表单（三）联动" class="headerlink" title="任务三：表单（三）联动"></a>任务三：表单（三）联动</h1><h2 id="任务目的"><a href="#任务目的" class="headerlink" title="任务目的"></a>任务目的</h2><p>加强对JavaScript的掌握</p>
+<p>熟悉常用表单处理逻辑</p>
+<h2 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h2><p>如示例图中所示，在页面中完成两个单选框，切换单选框的不同选项时下方显示的表单随之切换。<br>当选择在校生时，出现两个select下拉菜单，一个选择城市，一个选择学校，当选择非在校生时，出一个文本输入框<br>学校下拉菜单里的学校名单均为城市下拉菜单中所选的城市中的大学，当城市发生变化时，学校一起发生变化<br>城市及学校的数据随意编造即可，无需真实完整</p>
+<h2 id="任务注意事项"><a href="#任务注意事项" class="headerlink" title="任务注意事项"></a>任务注意事项</h2><p>要求功能实现与任务描述中完全一致<br>示例图仅为参考，样式不需要完全实现一致<br>请注意代码风格的整齐、优雅<br>代码中含有必要的注释<br>不允许借助任何第三方组件库实现</p>
+<a id="more"></a>
+<p><em>Demo增加功能：</em><br>1、添加专业的默认选择，选择城市时会自动选择学校与专业<br>2、添加了专业 <code>select</code> ，变为三级联动</p>
+<p><em>代码如下：</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>IFE JavaScript Task 2 - 03<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"form_wrap"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"student"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">checked</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>在校生<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"student"</span> <span class="attr">type</span>=<span class="string">"radio"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>非在校生<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>学校：<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">select</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;<span class="name">select</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>就业单位：<span class="tag">&lt;<span class="name">input</span> <span class="attr">title</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">            /* 常量 元素样式</span></span><br><span class="line"><span class="undefined">             */</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> wrapStyle = <span class="string">"color:#999999;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"font-size:14px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"color:#fd6ba6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"padding:10px;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> pStyle = <span class="string">""</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> inputRadioStyle = <span class="string">"margin:0 5px;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> selectStyle =</span></span><br><span class="line"><span class="javascript">                <span class="string">"height:25px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border:1px solid #309AE6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"border-radius:3px;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"color:#309AE6;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"box-shadow:2px 2px 3px #cccccc;"</span> +</span></span><br><span class="line"><span class="javascript">                <span class="string">"margin:0 5px;"</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> schools = [</span></span><br><span class="line"><span class="undefined">                &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"city"</span>: <span class="string">"北京"</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="string">"school"</span>: [<span class="string">"清华大学"</span>, <span class="string">"北京大学"</span>],</span></span><br><span class="line"><span class="javascript">                    <span class="string">"major"</span>: [[<span class="string">"软件工程"</span>, <span class="string">"计算机科学与技术"</span>], [<span class="string">"电子科学与技术"</span>, <span class="string">"信息物理工程"</span>]]&#125;,</span></span><br><span class="line"><span class="undefined">                &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"city"</span>: <span class="string">"上海"</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="string">"school"</span>: [<span class="string">"复旦大学"</span>, <span class="string">"上海交通大学"</span>, <span class="string">"上海大学"</span>],</span></span><br><span class="line"><span class="javascript">                    <span class="string">"major"</span>: [[<span class="string">"自动化"</span>, <span class="string">"电子科学与技术"</span>, <span class="string">"微电子制造工程"</span>], [<span class="string">"信息物理工程"</span>, <span class="string">"电子科学与技术"</span>, <span class="string">"微电子制造工程"</span>], [<span class="string">"计算机软件"</span>, <span class="string">"自动化"</span>, <span class="string">"微电子制造工程"</span>]]</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="undefined">                &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"city"</span>: <span class="string">"湘潭"</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="string">"school"</span>: [<span class="string">"湖南科技大学"</span>, <span class="string">"湘潭大学"</span>],</span></span><br><span class="line"><span class="javascript">                    <span class="string">"major"</span>: [[<span class="string">"计算机软件"</span>, <span class="string">"微电子制造工程"</span>], [<span class="string">"微电子制造工程"</span>, <span class="string">"软件工程"</span>]]&#125;,</span></span><br><span class="line"><span class="undefined">                &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"city"</span>: <span class="string">"长沙"</span>,</span></span><br><span class="line"><span class="javascript">                    <span class="string">"school"</span>: [<span class="string">"湖南大学"</span>, <span class="string">"湖南学院"</span>],</span></span><br><span class="line"><span class="javascript">                    <span class="string">"major"</span>: [[<span class="string">"电子信息工程 "</span>, <span class="string">"信息物理工程"</span>], [<span class="string">"计算机科学与技术 "</span>, <span class="string">"电子科学与技术"</span>]]&#125;</span></span><br><span class="line"><span class="undefined">            ];</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> wrap = <span class="built_in">document</span>.getElementById(<span class="string">"form_wrap"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> _select = $(<span class="string">"select"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*工具函数</span></span><br><span class="line"><span class="undefined">             */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">s</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> wrap.getElementsByTagName(s);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*添加样式</span></span><br><span class="line"><span class="undefined">             */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">addStyle</span>(<span class="params">el, style, num</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> els = $(el);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (els.length === <span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="undefined">                    els[0].style.cssText = style;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(els[<span class="number">0</span>]);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; els.length; i++) &#123;</span></span><br><span class="line"><span class="undefined">                        els[i].style.cssText = style;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">//需要隐藏的元素</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (els[num]) &#123;</span></span><br><span class="line"><span class="javascript">                        els[num].style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*绑定事件</span></span><br><span class="line"><span class="undefined">             */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">radioOnChange</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> el = $(<span class="string">"input"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> p = $(<span class="string">"p"</span>);</span></span><br><span class="line"><span class="javascript">                el[<span class="number">1</span>].onchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    p[<span class="number">1</span>].style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="javascript">                    p[<span class="number">2</span>].style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">                &#125;;</span></span><br><span class="line"><span class="javascript">                el[<span class="number">0</span>].onchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    p[<span class="number">1</span>].style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="javascript">                    p[<span class="number">2</span>].style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="undefined">                &#125;;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*创建城市option</span></span><br><span class="line"><span class="undefined">            */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">creatCityOption</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> string = <span class="string">""</span>;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; schools.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                    string += <span class="string">"&lt;option&gt;"</span> + schools[i].city + <span class="string">"&lt;/option&gt;"</span></span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="xml">                _select[0].innerHTML = "<span class="tag">&lt;<span class="name">option</span>&gt;</span>请选择城市！<span class="tag">&lt;/<span class="name">option</span>&gt;</span>" + string;</span></span><br><span class="line"><span class="xml">                _select[1].innerHTML = "<span class="tag">&lt;<span class="name">option</span>&gt;</span>请选择学校！<span class="tag">&lt;/<span class="name">option</span>&gt;</span>";</span></span><br><span class="line"><span class="xml">                _select[2].innerHTML = "<span class="tag">&lt;<span class="name">option</span>&gt;</span>请选择专业！<span class="tag">&lt;/<span class="name">option</span>&gt;</span>";</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            /*添加城市与学校onchange</span></span><br><span class="line"><span class="undefined">            */</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">cityOnchange</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">const</span> _select = $(<span class="string">"select"</span>);</span></span><br><span class="line"><span class="javascript">                _select[<span class="number">0</span>].onchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; schools.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">if</span> (<span class="keyword">this</span>.value === schools[i].city) &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="keyword">let</span> string = <span class="string">""</span>;<span class="comment">//学校字符串</span></span></span><br><span class="line"><span class="javascript">                            <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; schools[i].school.length; j++) &#123;</span></span><br><span class="line"><span class="javascript">                                <span class="comment">//学校</span></span></span><br><span class="line"><span class="javascript">                                string += <span class="string">"&lt;option&gt;"</span> + schools[i].school[j] + <span class="string">"&lt;/option&gt;"</span>;</span></span><br><span class="line"><span class="undefined">                                _select[1].innerHTML = string;</span></span><br><span class="line"><span class="javascript">                                <span class="comment">//专业</span></span></span><br><span class="line"><span class="javascript">                                <span class="keyword">let</span> str = <span class="string">""</span>;<span class="comment">//专业字符串</span></span></span><br><span class="line"><span class="javascript">                                <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; schools[i].major[j].length; k++) &#123;</span></span><br><span class="line"><span class="javascript">                                    str += <span class="string">"&lt;option&gt;"</span> + schools[i].major[<span class="number">0</span>][k] + <span class="string">"&lt;/option&gt;"</span>;</span></span><br><span class="line"><span class="undefined">                                    _select[2].innerHTML = str;</span></span><br><span class="line"><span class="undefined">                                &#125;</span></span><br><span class="line"><span class="undefined">                            &#125;</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;;</span></span><br><span class="line"><span class="javascript">                _select[<span class="number">1</span>].onchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; schools.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; schools[i].school.length; j++) &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="keyword">let</span> string = <span class="string">""</span>;</span></span><br><span class="line"><span class="javascript">                            <span class="keyword">if</span> (<span class="keyword">this</span>.value === schools[i].school[j]) &#123;</span></span><br><span class="line"><span class="javascript">                                <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; schools[i].major[j].length; k++) &#123;</span></span><br><span class="line"><span class="javascript">                                    string += <span class="string">"&lt;option&gt;"</span> + schools[i].major[j][k] + <span class="string">"&lt;/option&gt;"</span>;</span></span><br><span class="line"><span class="undefined">                                    _select[2].innerHTML = string;</span></span><br><span class="line"><span class="undefined">                                &#125;</span></span><br><span class="line"><span class="undefined">                            &#125;</span></span><br><span class="line"><span class="undefined">                        &#125;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">                wrap.style.cssText = wrapStyle;</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"p"</span>, pStyle, <span class="number">2</span>);</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"input"</span>, inputRadioStyle);</span></span><br><span class="line"><span class="javascript">                addStyle(<span class="string">"select"</span>, selectStyle);</span></span><br><span class="line"><span class="undefined">                radioOnChange();</span></span><br><span class="line"><span class="undefined">                creatCityOption();</span></span><br><span class="line"><span class="undefined">                cityOnchange();</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            init();</span></span><br><span class="line"><span class="undefined">        &#125;)()</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>Demo如下：</em></p>
+<script>
+    window.onload = function () {
+        (function () {
+            /* 常量 元素样式
+             */
+            const wrapStyle = "color:#999999;" +
+                "font-size:14px;" +
+                "color:#fd6ba6;" +
+                "padding:10px;";
+            const pStyle = "";
+            const inputRadioStyle = "margin:0 5px;";
+            const selectStyle =
+                "height:25px;" +
+                "border:1px solid #309AE6;" +
+                "border-radius:3px;" +
+                "color:#309AE6;" +
+                "box-shadow:2px 2px 3px #cccccc;" +
+                "margin:0 5px;";
+            const schools = [
+                {
+                    "city": "北京",
+                    "school": ["清华大学", "北京大学"],
+                    "major": [["软件工程", "计算机科学与技术"], ["电子科学与技术", "信息物理工程"]]},
+                {
+                    "city": "上海",
+                    "school": ["复旦大学", "上海交通大学", "上海大学"],
+                    "major": [["自动化", "电子科学与技术", "微电子制造工程"], ["信息物理工程", "电子科学与技术", "微电子制造工程"], ["计算机软件", "自动化", "微电子制造工程"]]
+                },
+                {
+                    "city": "湘潭",
+                    "school": ["湖南科技大学", "湘潭大学"],
+                    "major": [["计算机软件", "微电子制造工程"], ["微电子制造工程", "软件工程"]]},
+                {
+                    "city": "长沙",
+                    "school": ["湖南大学", "湖南学院"],
+                    "major": [["电子信息工程 ", "信息物理工程"], ["计算机科学与技术 ", "电子科学与技术"]]}
+            ];
+            const wrap = document.getElementById("form_wrap");
+            const _select = $("select");
+
+            /*工具函数
+             */
+            function $(s) {
+                return wrap.getElementsByTagName(s);
+            }
+
+            /*添加样式
+             */
+            function addStyle(el, style, num) {
+                var els = $(el);
+                if (els.length === 1) {
+                    els[0].style.cssText = style;
+                    console.log(els[0]);
+                } else {
+                    for (let i = 0; i < els.length; i++) {
+                        els[i].style.cssText = style;
+                    }
+                    //需要隐藏的元素
+                    if (els[num]) {
+                        els[num].style.display = "none";
+                    }
+                }
+            }
+
+            /*绑定事件
+             */
+            function radioOnChange() {
+                let el = $("input");
+                let p = $("p");
+                el[1].onchange = function () {
+                    p[1].style.display = "none";
+                    p[2].style.display = "block";
+                };
+                el[0].onchange = function () {
+                    p[1].style.display = "block";
+                    p[2].style.display = "none";
+                };
+            }
+
+            /*创建城市option
+            */
+            function creatCityOption() {
+                let string = "";
+                for (let i = 0; i < schools.length; i++) {
+                    string += "<option>" + schools[i].city + "</option>"
+                }
+                _select[0].innerHTML = "<option>请选择城市！</option>" + string;
+                _select[1].innerHTML = "<option>请选择学校！</option>";
+                _select[2].innerHTML = "<option>请选择专业！</option>";
+            }
+
+            /*添加城市与学校onchange
+            */
+            function cityOnchange() {
+                const _select = $("select");
+                _select[0].onchange = function () {
+                    for (let i = 0; i < schools.length; i++) {
+                        if (this.value === schools[i].city) {
+                            let string = "";//学校字符串
+                            for (let j = 0; j < schools[i].school.length; j++) {
+                                //学校
+                                string += "<option>" + schools[i].school[j] + "</option>";
+                                _select[1].innerHTML = string;
+                                //专业
+                                let str = "";//专业字符串
+                                for (let k = 0; k < schools[i].major[j].length; k++) {
+                                    str += "<option>" + schools[i].major[0][k] + "</option>";
+                                    _select[2].innerHTML = str;
+                                }
+                            }
+                        }
+                    }
+                };
+                _select[1].onchange = function () {
+                    for (let i = 0; i < schools.length; i++) {
+                        for (let j = 0; j < schools[i].school.length; j++) {
+                            let string = "";
+                            if (this.value === schools[i].school[j]) {
+                                for (let k = 0; k < schools[i].major[j].length; k++) {
+                                    string += "<option>" + schools[i].major[j][k] + "</option>";
+                                    _select[2].innerHTML = string;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            function init() {
+                wrap.style.cssText = wrapStyle;
+                addStyle("p", pStyle, 2);
+                addStyle("input", inputRadioStyle);
+                addStyle("select", selectStyle);
+                radioOnChange();
+                creatCityOption();
+                cityOnchange();
+            }
+
+            init();
+        })()
+    }
+</script>
+
+<div id="form_wrap"><p><input title="" name="student" type="radio" checked="true"><span>在校生</span><input title="" name="student" type="radio"><span>非在校生</span></p><p>学校：<select name="" title=""></select><select title="" name=""></select><select title="" name=""></select></p><p>就业单位：<input title="" type="text"></p></div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/百度IFE2017/" rel="tag"># 百度IFE2017</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/01/git/Git-command/" rel="next" title="Git常用命令速查表">
+                <i class="fa fa-chevron-left"></i> Git常用命令速查表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/15/js/JavaScript-010/" rel="prev" title="为列表中最后一个元素去除下划线">
+                为列表中最后一个元素去除下划线 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Kamui" />
+            
+              <p class="site-author-name" itemprop="name">Kamui</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/kamui1073" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#任务三：表单（三）联动"><span class="nav-number">1.</span> <span class="nav-text">任务三：表单（三）联动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务目的"><span class="nav-number">1.1.</span> <span class="nav-text">任务目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务描述"><span class="nav-number">1.2.</span> <span class="nav-text">任务描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务注意事项"><span class="nav-number">1.3.</span> <span class="nav-text">任务注意事项</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kamui</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Hosted by <a href='https://coding.net/help/doc/pages/index.html' style='font-weight:bold;' target='_blank'>Coding Pages</a></div>
+
+
+<span class="post-meta-divider">|</span>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+  <span class="post-meta-divider"></span>
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-spin fa-globe"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/love.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/console-log.js?v=6.0.4"></script>
+
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+</body>
+</html>
