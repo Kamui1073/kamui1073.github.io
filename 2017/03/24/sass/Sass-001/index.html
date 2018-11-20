@@ -112,7 +112,7 @@
 <meta property="og:description" content="使用Sass循环输出多个相同样式图标，效果如下：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/uploads/fuw.jpg">
-<meta property="og:updated_time" content="2018-02-28T03:43:14.704Z">
+<meta property="og:updated_time" content="2018-11-20T01:49:33.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass 循环输出图标">
 <meta name="twitter:description" content="使用Sass循环输出多个相同样式图标，效果如下：">
@@ -377,7 +377,8 @@
 <p><img src="/uploads/fuw.jpg" style="border:none;"></p>
 <a id="more"></a>
 <p>Sass代码如下：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环输出服务大厅图标</span></span><br><span class="line">%idx-service &#123;<span class="attribute">display</span>:block;<span class="attribute">float</span>:left;<span class="attribute">width</span>: <span class="number">77px</span>;<span class="attribute">height</span>: <span class="number">77px</span>;&#125; </span><br><span class="line"><span class="variable">$num</span>: <span class="number">6</span>;<span class="comment">//输出数量</span></span><br><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through <span class="variable">$num</span> &#123;</span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-class">.icon-0</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    @<span class="keyword">extend</span> %idx-service;<span class="comment">//引入单个图标样式</span></span><br><span class="line">    <span class="attribute">background</span>: url(<span class="string">"../images/service_0#&#123;$i&#125;.png"</span>) no-repeat center;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环输出多个相同样式图标</span></span><br><span class="line">%idx-service &#123;<span class="attribute">display</span>:block;<span class="attribute">float</span>:left;<span class="attribute">width</span>: <span class="number">77px</span>;<span class="attribute">height</span>: <span class="number">77px</span>;&#125; </span><br><span class="line"><span class="variable">$num</span>: <span class="number">6</span>;<span class="comment">//输出数量</span></span><br><span class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through <span class="variable">$num</span> &#123;</span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-class">.icon-0</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    @<span class="keyword">extend</span> %idx-service;<span class="comment">//引入单个图标样式</span></span><br><span class="line">    <span class="attribute">background</span>: url(<span class="string">"../images/service_0#&#123;$i&#125;.png"</span>) no-repeat center;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -491,7 +492,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -547,7 +548,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
