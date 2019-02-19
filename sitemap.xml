@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/demo/index.html</loc>
+    
+    <lastmod>2019-02-19T01:48:27.121Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/project/index.html</loc>
     
     <lastmod>2019-01-17T06:37:00.918Z</lastmod>
@@ -79,13 +86,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/demo/index.html</loc>
-    
-    <lastmod>2018-02-28T03:43:14.706Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2018-02-28T03:43:14.705Z</lastmod>
@@ -107,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/31/linux/nodejs-install/</loc>
+    <loc>http://yoursite.com/2017/03/29/linux/contos-network/</loc>
     
     <lastmod>2018-02-28T03:43:14.703Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/29/linux/contos-network/</loc>
+    <loc>http://yoursite.com/2017/03/31/linux/nodejs-install/</loc>
     
     <lastmod>2018-02-28T03:43:14.703Z</lastmod>
     
@@ -170,13 +170,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/19/js/JavaScript-008/</loc>
-    
-    <lastmod>2018-02-28T03:43:14.699Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/06/30/js/JavaScript-006/</loc>
     
     <lastmod>2018-02-28T03:43:14.699Z</lastmod>
@@ -184,14 +177,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/05/16/js/JavaScript-005/</loc>
+    <loc>http://yoursite.com/2017/07/19/js/JavaScript-008/</loc>
+    
+    <lastmod>2018-02-28T03:43:14.699Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/05/05/js/JavaScript-004/</loc>
     
     <lastmod>2018-02-28T03:43:14.698Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/05/05/js/JavaScript-004/</loc>
+    <loc>http://yoursite.com/2017/05/16/js/JavaScript-005/</loc>
     
     <lastmod>2018-02-28T03:43:14.698Z</lastmod>
     
@@ -205,14 +205,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/04/27/js/JavaScript-002/</loc>
+    <loc>http://yoursite.com/2017/03/27/js/JavaScript-001/</loc>
     
     <lastmod>2018-02-28T03:43:14.697Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/27/js/JavaScript-001/</loc>
+    <loc>http://yoursite.com/2017/04/27/js/JavaScript-002/</loc>
     
     <lastmod>2018-02-28T03:43:14.697Z</lastmod>
     
@@ -233,13 +233,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/09/30/ife2017/js2/Task04/</loc>
-    
-    <lastmod>2018-02-28T03:43:14.695Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/09/07/ife2017/js2/Task03/</loc>
     
     <lastmod>2018-02-28T03:43:14.695Z</lastmod>
@@ -247,9 +240,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/22/ife2017/js/Task08/</loc>
+    <loc>http://yoursite.com/2017/09/30/ife2017/js2/Task04/</loc>
     
-    <lastmod>2018-02-28T03:43:14.694Z</lastmod>
+    <lastmod>2018-02-28T03:43:14.695Z</lastmod>
     
   </url>
   
@@ -261,14 +254,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/07/ife2017/js/Task07/</loc>
+    <loc>http://yoursite.com/2017/08/22/ife2017/js/Task08/</loc>
+    
+    <lastmod>2018-02-28T03:43:14.694Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/13/ife2017/js/Task06/</loc>
     
     <lastmod>2018-02-28T03:43:14.693Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/13/ife2017/js/Task06/</loc>
+    <loc>http://yoursite.com/2017/08/07/ife2017/js/Task07/</loc>
     
     <lastmod>2018-02-28T03:43:14.693Z</lastmod>
     
@@ -289,7 +289,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/06/23/ife2017/js/Task03/</loc>
+    <loc>http://yoursite.com/2017/06/22/ife2017/js/Task02/</loc>
     
     <lastmod>2018-02-28T03:43:14.691Z</lastmod>
     
@@ -303,7 +303,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/06/22/ife2017/js/Task02/</loc>
+    <loc>http://yoursite.com/2017/06/23/ife2017/js/Task03/</loc>
     
     <lastmod>2018-02-28T03:43:14.691Z</lastmod>
     
@@ -324,6 +324,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2017/12/27/git/Git-core.autocrlf/</loc>
+    
+    <lastmod>2018-02-28T03:43:14.689Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/09/01/git/Git-command/</loc>
     
     <lastmod>2018-02-28T03:43:14.689Z</lastmod>
@@ -332,13 +339,6 @@
   
   <url>
     <loc>http://yoursite.com/2017/04/20/git/Hexo-GitHub/</loc>
-    
-    <lastmod>2018-02-28T03:43:14.689Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/12/27/git/Git-core.autocrlf/</loc>
     
     <lastmod>2018-02-28T03:43:14.689Z</lastmod>
     
@@ -380,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/26/JS-Sorting/7.heapSort/</loc>
+    <loc>http://yoursite.com/2017/07/26/JS-Sorting/6.quickSort/</loc>
     
     <lastmod>2018-02-28T03:43:14.686Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/26/JS-Sorting/6.quickSort/</loc>
+    <loc>http://yoursite.com/2017/07/26/JS-Sorting/7.heapSort/</loc>
     
     <lastmod>2018-02-28T03:43:14.686Z</lastmod>
     
@@ -415,14 +415,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/26/JS-Sorting/10.radixSort/</loc>
+    <loc>http://yoursite.com/2017/07/26/JS-Sorting/2.selectionSort/</loc>
     
     <lastmod>2018-02-28T03:43:14.683Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/07/26/JS-Sorting/2.selectionSort/</loc>
+    <loc>http://yoursite.com/2017/07/26/JS-Sorting/10.radixSort/</loc>
     
     <lastmod>2018-02-28T03:43:14.683Z</lastmod>
     

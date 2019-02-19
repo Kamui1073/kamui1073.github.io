@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="演示">
+<meta name="description" content="2019    Slots                $(document).ready(function () {                 /**                  * Created by Kamui on 2017/3/22.                  *显示总数                  */                 functi">
 <meta property="og:type" content="website">
 <meta property="og:title" content="演示">
 <meta property="og:url" content="http://yoursite.com/demo/index.html">
 <meta property="og:site_name" content="Kamui&#39;s Notes">
-<meta property="og:description" content="演示">
+<meta property="og:description" content="2019    Slots                $(document).ready(function () {                 /**                  * Created by Kamui on 2017/3/22.                  *显示总数                  */                 functi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-28T03:43:14.706Z">
+<meta property="og:updated_time" content="2019-02-19T01:48:27.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="演示">
-<meta name="twitter:description" content="演示">
+<meta name="twitter:description" content="2019    Slots                $(document).ready(function () {                 /**                  * Created by Kamui on 2017/3/22.                  *显示总数                  */                 functi">
 
 
 
@@ -305,7 +305,22 @@
       <div class="post-body">
         
         
-          <p>演示</p>
+          <p><ul id="title-inner"><br>    <li><b>2019</b></li><br>    <li><a href="https://kamui1073.gitee.io/slot/app/index.html" target="_blank">Slots</a></li><br></ul></p>
+<p><ol></ol></p>
+<script src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+            $(document).ready(function () {
+                /**
+                 * Created by Kamui on 2017/3/22.
+                 *显示总数
+                 */
+                function ChildrenNum(parent,children,_print) {
+                    var num = $("#" + parent).find(children).length;
+                    $("#" + _print).html("共：<b>" + num + "&nbsp;</b>" + "个演示");
+                }
+                ChildrenNum("title-inner","a","num-print");
+            })
+</script>
 
         
       </div>
