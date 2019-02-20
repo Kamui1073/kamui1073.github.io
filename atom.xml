@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-12T08:41:30.448Z</updated>
+  <updated>2019-02-20T08:32:07.152Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日期插件宽度动态改变</title>
+    <link href="http://yoursite.com/2019/01/26/js/JavaScript-021/"/>
+    <id>http://yoursite.com/2019/01/26/js/JavaScript-021/</id>
+    <published>2019-01-26T08:19:19.000Z</published>
+    <updated>2019-02-20T08:32:07.152Z</updated>
+    
+    <content type="html"><![CDATA[<p>日期插件宽度根据easyUi插件宽度动态改变</p><p><em>代码如下：</em></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Created by Kamui on 2019/01/16.</span></span><br><span class="line"><span class="comment">     *   日期插件宽度动态改变</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeWidth</span>(<span class="params">wdaet,easyuiEl</span>)</span>&#123;</span><br><span class="line"><span class="comment">//页面载入时改变宽度</span></span><br><span class="line">$(wdaet).css(<span class="string">'width'</span>,$(easyuiEl).width());</span><br><span class="line"><span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">//窗口改变大小时重新获取宽度</span></span><br><span class="line">$(<span class="built_in">window</span>).bind(<span class="string">'resize'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//停止计时器重新获取宽度</span></span><br><span class="line">        <span class="keyword">if</span>(timer) &#123;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(</span><br><span class="line">        () =&gt; $(wdaet).css(<span class="string">'width'</span>,$(easyuiEl).width())</span><br><span class="line">         ,<span class="number">100</span>);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">resizeWidth(<span class="string">'.dateWrap'</span>,<span class="string">'.textbox'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;日期插件宽度根据easyUi插件宽度动态改变&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;代码如下：&lt;/em&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;lin
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>EasyUI DataGrid 表头合并样式</title>
@@ -425,26 +450,6 @@
     
     
       <category term="百度IFE2017" scheme="http://yoursite.com/tags/%E7%99%BE%E5%BA%A6IFE2017/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git常用命令速查表</title>
-    <link href="http://yoursite.com/2017/09/01/git/Git-command/"/>
-    <id>http://yoursite.com/2017/09/01/git/Git-command/</id>
-    <published>2017-09-01T07:08:22.000Z</published>
-    <updated>2018-02-28T03:43:14.689Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/uploads/git_command.jpg" style="border:none;border-radius: 10px;"></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/uploads/git_command.jpg&quot; style=&quot;border:none;border-radius: 10px;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
     
   </entry>
   
